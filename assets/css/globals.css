@@ -1,0 +1,18 @@
+/*!
+Theme Name: Pet Love This
+Theme URI: https://github.com/techiesakar/petlovethis
+Author: Sakar Aryal
+Author URI: https://github.com/techiesakar
+Description: Petlovethis is a modern and responsive WordPress theme designed for pet care websites. With customizable homepage sections and multiple widget areas, you can easily showcase your content and engage with your audience. Perfect for pet bloggers, veterinarians, and animal lovers alike.
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: petlovethis
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
