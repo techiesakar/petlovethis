@@ -1,5 +1,5 @@
 node_modules/
 package.json
 yarn.lock
-preetier.config.js
+prettier.config.js
 tailwind.config.js
