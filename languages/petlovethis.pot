@@ -23,7 +23,7 @@ msgid "https://github.com/techiesakar/petlovethis"
 msgstr ""
 
 #. Description of the theme
-msgid "Petlovethis is a modern and responsive WordPress theme designed for pet care websites. With customizable homepage sections and multiple widget areas, you can easily showcase your content and engage with your audience. Perfect for pet bloggers, veterinarians, and animal lovers alike."
+msgid "Pet Love This is a modern and responsive WordPress theme designed for pet care websites. With customizable homepage sections and multiple widget areas, you can easily showcase your content and engage with your audience. Perfect for pet bloggers, veterinarians, and animal lovers alike."
 msgstr ""
 
 #. Author of the theme
