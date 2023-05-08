@@ -28,7 +28,7 @@ If you need help with the Pet Love This theme, please contact us at support@petl
 
 ## Credits
 
-The Pet Love This theme was created by [Your Name] and is based on the Underscores starter theme
+The Pet Love This theme was created by Sakar Aryal
 
 ## License
 
