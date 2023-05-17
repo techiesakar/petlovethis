@@ -13,8 +13,7 @@
 defined('ABSPATH') || exit;
 ?>
 
-
-<div class="max-w-screen-2xl mx-auto py-8 px-6">
+<div class="max-w-screen-xl mx-auto py-8 px-6">
     <h2 class="section-title text-3xl font-bold mb-4 text-center max-w-lg mx-auto text-primary-dark">Purr-use Our Cat Articles</h2>
     <p class="text-lg font-normal text-gray-600 mb-4 text-center max-w-2xl mx-auto leading-8">Our website covers a variety of feline-related topics, including hypoallergenic cat breeds, DIY cat bed plans, cat food reviews, and recommendations to keep your cat happy and content.</p>
 

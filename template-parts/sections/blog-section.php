@@ -13,26 +13,26 @@
 defined('ABSPATH') || exit;
 ?>
 
-
-<div class="max-w-screen-xl mx-auto py-8 px-6">
+<header class="page-header w-full relative flex items-center justify-start flex-col bg-cover bg-no-repeat bg-center py-40 px-0 before:absolute before:content-[''] before:w-full before:h-full before:top-0 before:left-0 before:opacity-70 before:z-10 before:bg-black">
+    <h2 class="relative z-50 page-title text-6xl font-bold mb-4 max-w-lg mx-auto text-gray-100"><?php the_title(); ?></h2>
     <?php
-    if (is_category()) {
-        $category_title = single_cat_title('', false);
-        $category_id = get_queried_object_id();
-        echo '<h2 class="section-title text-3xl font-bold mb-4 text-center max-w-lg mx-auto text-primary-dark">' . $category_title . '</h2>
-        ';
-    }
+
+    get_template_part('template-parts/components/breadcrumb');
     ?>
-    <p class="text-lg font-normal text-gray-600 mb-4 text-center max-w-2xl mx-auto leading-8">Our website covers a variety of feline-related topics, including hypoallergenic cat breeds, DIY cat bed plans, cat food reviews, and recommendations to keep your cat happy and content.</p>
+
+    <div class="absolute top-0 h-100 -z-10 left-0 bottom-0 right-0" style="background-image:url(<?php echo get_template_directory_uri(); ?>/assets/images/background/breadcrumb-1.jpg)"></div>
+</header>
+<div class="max-w-screen-xl mx-auto py-8 px-6">
 
     <div class="grid grid-cols-3 relative gap-6 mb-4">
         <?php
         $args = array(
             'post_type' => 'post',
-            'posts_per_page' => 6,
-            'cat' => $category_id,
+            'posts_per_page' => get_option('posts_per_page'),
+            'paged' => $paged
         );
         $query = new WP_Query($args);
+
 
         if ($query->have_posts()) :
             while ($query->have_posts()) :
@@ -45,9 +45,14 @@ defined('ABSPATH') || exit;
                 <!-- Card Ends -->
         <?php
             endwhile;
-            wp_reset_postdata();
+
+
         endif;
         ?>
     </div>
-
+    <!-- Grid Ends -->
+    <?php
+    // Display pagination links.
+    petlovethis_pagination($paged, $query->max_num_pages);
+    wp_reset_postdata(); ?>
 </div>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template Name: Homepage
+ * Template Name: Blog
  *
  * @link https://www.petlovethis.com
  *
@@ -19,12 +19,9 @@ get_header();
     <section id="recent-cats">
         <?php
         // Include recent posts card template part.
-        get_template_part('template-parts/sections/recent-posts-card-section');
-        get_template_part('template-parts/sections/featured-section-1');
-
+        get_template_part('template-parts/sections/blog-section');
         ?>
     </section>
 
-</main><!-- #primary -->
 
-<?php get_footer();
+</main><!-- #primary -->

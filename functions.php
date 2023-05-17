@@ -158,8 +158,8 @@ add_action('widgets_init', 'petlovethis_widgets_init');
  */
 function petlovethis_scripts()
 {
-	wp_enqueue_style('petlovethis-style', get_stylesheet_uri(), array(), _S_VERSION);
-	wp_style_add_data('petlovethis-style', 'rtl', 'replace');
+
+	wp_enqueue_style('petlovethis-style', get_stylesheet_uri(), [], filemtime(get_template_directory() . '/style.css'));
 
 	wp_enqueue_script('petlovethis-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 

@@ -32,4 +32,4 @@ The Pet Love This theme was created by Sakar Aryal
 
 ## License
 
-The Pet Love This theme is licensed under the GNU GPL v2 or later license.
+The Pet Love This theme is licensed under a Single Use or Single Site license.
