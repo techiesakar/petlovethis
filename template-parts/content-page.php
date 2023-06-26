@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying page content in page.php
  *
@@ -8,47 +9,68 @@
  */
 
 ?>
+<?php
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+/**
+ * Template part for displaying posts
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package Pet_Love_This
+ */
+?>
 
-	<?php petlovethis_post_thumbnail(); ?>
 
-	<div class="entry-content">
-		<?php
-		the_content();
+<section class="petContainer relative lg:pt-8">
+	<div class="lg:w-9/12 mx-auto">
+		<div class=" relative gap-8 mb-4 bg-white rounded-lg">
 
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'petlovethis' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
-	</div><!-- .entry-content -->
+			<article id=" post-<?php the_ID(); ?>" <?php post_class("flex md:col-span-8 flex-col gap-8 single-article"); ?>>
+				<header class="entry-header w-full flex flex-col gap-3 ">
 
-	<?php if ( get_edit_post_link() ) : ?>
-		<footer class="entry-footer">
-			<?php
-			edit_post_link(
-				sprintf(
-					wp_kses(
-						/* translators: %s: Name of current post. Only visible to screen readers */
-						__( 'Edit <span class="screen-reader-text">%s</span>', 'petlovethis' ),
-						array(
-							'span' => array(
-								'class' => array(),
+
+					<!-- Single Post Title -->
+					<h1 class="entry-title md:text-3xl text-2xl lg:text-5xl font-semibold text-gray-800 lg:leading-[56px]		">
+						<?php the_title(); ?>
+					</h1>
+					<!-- .entry_title -->
+
+
+				</header><!-- .entry-header -->
+
+				<div class="entry-content flex flex-col gap-6">
+
+					<?php
+					the_content(
+						sprintf(
+							wp_kses(
+								/* translators: %s: Name of current post. Only visible to screen readers */
+								__('Continue reading<span class="screen-reader-text"> "%s"</span>', 'petlovethis'),
+								array(
+									'span' => array(
+										'class' => array(),
+									),
+								)
 							),
+							wp_kses_post(get_the_title())
 						)
-					),
-					wp_kses_post( get_the_title() )
-				),
-				'<span class="edit-link">',
-				'</span>'
-			);
-			?>
-		</footer><!-- .entry-footer -->
-	<?php endif; ?>
-</article><!-- #post-<?php the_ID(); ?> -->
+					);
+					?>
+
+
+				</div><!-- .entry-content -->
+
+
+
+
+			</article><!-- #post-<?php the_ID(); ?> -->
+
+
+		</div>
+	</div>
+
+
+
+
+
+</section>

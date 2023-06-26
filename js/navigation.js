@@ -100,32 +100,108 @@
   }
 })();
 
-var prevScrollpos = window.pageYOffset;
+// var prevScrollpos = window.pageYOffset;
 
 window.addEventListener("scroll", function () {
-  scrollFunction();
+  // scrollFunction();
 });
 
-function scrollFunction() {
-  var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.body.classList.remove("scrolled_down");
-    document.body.classList.add("scrolled_up");
-  } else {
-    document.body.classList.remove("scrolled_up");
-    document.body.classList.add("scrolled_down");
-  }
-  prevScrollpos = currentScrollPos;
+// function scrollFunction() {
+//   var currentScrollPos = window.pageYOffset;
+//   if (prevScrollpos > currentScrollPos) {
+//     document.body.classList.remove("scrolled_down");
+//     document.body.classList.add("scrolled_up");
+//   } else {
+//     document.body.classList.remove("scrolled_up");
+//     document.body.classList.add("scrolled_down");
+//   }
+//   prevScrollpos = currentScrollPos;
 
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("primary_nav").classList.add("is_fixed");
-    document
-      .getElementById("primary_nav")
-      .classList.remove("scrolled_completed");
-    document.body.classList.add("scrolled");
-  } else {
-    document.getElementById("primary_nav").classList.remove("is_fixed");
-    document.getElementById("primary_nav").classList.add("scrolled_completed");
-    document.body.classList.remove("scrolled");
+//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+//     document.getElementById("primary_nav").classList.add("is_fixed");
+//     document.getElementById("masthead").classList.remove("scrolled_completed");
+//     document.body.classList.add("scrolled");
+//   } else {
+//     document.getElementById("primary_nav").classList.remove("is_fixed");
+//     document.getElementById("masthead").classList.add("scrolled_completed");
+//     document.body.classList.remove("scrolled");
+//   }
+// }
+
+const searchCloses = document.querySelectorAll(".search_close");
+const searchOverlayContainer = document.getElementById("search_overlay");
+console.log(searchCloses);
+searchCloses.forEach((searchClose) => {
+  searchClose.addEventListener("click", () => {
+    searchOverlayContainer.classList.toggle("active");
+  });
+});
+
+// Check if #rank-math-toc exists in the document
+var tocElement = document.querySelector("#rank-math-toc");
+if (tocElement) {
+  // Select the ul element within #rank-math-toc
+  var navElement = tocElement.querySelector("nav");
+  if (navElement) {
+    // Select the h2 element within #rank-math-toc
+    var h2Element = tocElement.querySelector("h2");
+    if (h2Element) {
+      // Add onclick event listener to the h2 element
+      h2Element.addEventListener("click", function () {
+        // Toggle a CSS class to change the height of the ul element
+        navElement.classList.toggle("collapsed");
+      });
+    }
   }
+}
+
+// For Scroll To Top
+
+// Get the button element
+const toTopButton = document.getElementById("toTop");
+
+// Add a scroll event listener to the window
+window.addEventListener("scroll", () => {
+  // Check the scroll position
+  if (window.scrollY >= 200) {
+    // Display the button
+    toTopButton.classList.remove("hidden");
+  } else {
+    // Hide the button
+    toTopButton.classList.add("hidden");
+  }
+});
+
+// Add a click event listener to the button
+toTopButton.addEventListener("click", () => {
+  // Scroll smoothly to the top of the page
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
+// Scroll Indicator
+
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  var scrollIndicatorElement = document.getElementById("scrollIndicator");
+
+  if (scrollIndicatorElement) {
+    scrollIndicator();
+  }
+}
+
+function scrollIndicator() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+
+  document.getElementById("scrollIndicator").style.width = scrolled + "%";
 }

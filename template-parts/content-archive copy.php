@@ -16,45 +16,23 @@ defined('ABSPATH') || exit;
     <div class="max-w-screen-2xl mx-auto relative text-white">
 
         <div class="content flex flex-col gap-6 mb-8 ">
-            <div class="flex items-center gap-2">
-                <a class="text-gray-600" href="<?php echo esc_url(get_home_url()); ?>">Home</a>
-
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 text-gray-900">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-
-                <span class="text-gray-900 font-semibold">
-                    <?php $category = get_queried_object();
-                    $category_title = $category->name;
-
-                    echo $category_title ?>
-                </span>
-
-
-            </div>
-
-
             <?php
-            if (has_nav_menu('archive-categories')) {
-            ?>
-                <div class="font-semibold text-lg text-gray-900">
-                    Filtered By Category:
-                </div>
-            <?php
-                wp_nav_menu(
-                    array(
-                        'theme_location' => 'archive-categories',
-                        'menu_id'        => 'archive-categories',
-                        'container'      => false, // Removes the container <div>
-                        'menu_class'     => 'flex gap-6 font-semibold',
-                    )
-                );
+            if (is_category()) {
+                $category = get_queried_object();
+                $category_title = $category->name;
+                $category_description = term_description($category);
             }
             ?>
-
-
+            <h1 class="text-6xl text-gray-900 text-left relative w-fit ">
+                <?php echo esc_html($category_title) ?>
+                <span class="w-1/2 rounded h-1 bg-underline absolute -bottom-4 left-0"></span>
+            </h1>
+            <p class=" text-gray-600"><?php echo wp_strip_all_tags($category_description); ?></p>
 
         </div>
+
+
+
     </div>
     </section>
     <section class="max-w-screen-2xl mx-auto relative ">

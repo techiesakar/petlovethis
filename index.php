@@ -16,7 +16,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main font-poppins">
+<main id="primary" class="site-main font-poppins pt-24">
 
 	<?php
 	if (have_posts()) :

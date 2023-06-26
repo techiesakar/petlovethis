@@ -30,14 +30,14 @@ if (has_post_thumbnail()) {
 
 </div>
 
-<div class="lower-content relative pl-10 pb-10 pt-8 pr-8">
+<div class="lower-content relative p-4 pb-5 ">
     <div class="post-meta flex">
         <?php $author_name = get_the_author(); ?>
         <span class="author">
-            <?php printf(__('%s', 'petlovethis'), '<a href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '" class="uppercase ">' . esc_html($author_name) . '</a>'); ?>
+            <?php printf(__('%s', 'petlovethis'), '<a href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '" class="uppercase text-sm">' . esc_html($author_name) . '</a>'); ?>
         </span>
     </div>
-    <h4 class="post-title text-xl hover:text-primary transition mb-4 font-semibold text-gray-900"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+    <h4 class="post-title text-lg font-medium hover:text-primary transition mb-4  text-gray-900"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
     <p class="font-normal text-gray-600 mb-5"><?php echo wp_trim_words(get_the_excerpt(), 10, '...'); ?></p>
     <a href="<?php the_permalink(); ?>" class="btn-primary"><?php esc_html_e('Read More', 'petlovethis'); ?>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

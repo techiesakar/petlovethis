@@ -52,6 +52,10 @@ function petlovethis_setup()
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__('Primary', 'petlovethis'),
+			'menu-2' => esc_html__('Top Menu', 'petlovethis'),
+			'menu-3' => esc_html__('Footer About Menu', 'petlovethis'),
+			'menu-4' => esc_html__('Footer Discover', 'petlovethis'),
+			'archive-categories' => esc_html__('Archive Top Categories', 'petlovethis'),
 		)
 	);
 
@@ -104,6 +108,10 @@ function petlovethis_setup()
 }
 add_action('after_setup_theme', 'petlovethis_setup');
 
+
+
+
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -127,9 +135,24 @@ add_action('after_setup_theme', 'custom_image_sizes');
 
 function custom_image_sizes()
 {
-	add_image_size('medium_card_image', 300, 200, true);
-	add_image_size('large_card_image', 600, 300, true);
+	add_image_size('lg_card_image', 600, 300, true);
+	add_image_size('md_card_image', 324, 226, true);
+	add_image_size('sm_card_image', 155, 103, true);
+	add_image_size('xs_card_image', 155, 103, true);
 }
+
+
+
+// Custom Logo
+
+function petlovethis_custom_logo($img_classes = '')
+{
+	$logo = get_custom_logo();
+	$logo_without_anchor_tag = preg_replace('/<a.*?>|<\/a>/', '', $logo); // Remove the anchor tag
+	$logo_with_img_classes = str_replace('custom-logo', 'custom-logo ' . $img_classes, $logo_without_anchor_tag);
+	echo $logo_with_img_classes;
+}
+
 
 
 /**
@@ -141,11 +164,11 @@ function petlovethis_widgets_init()
 {
 	register_sidebar(
 		array(
-			'name'          => esc_html__('Sidebar', 'petlovethis'),
-			'id'            => 'sidebar-1',
+			'name'          => esc_html__('Footer 1', 'petlovethis'),
+			'id'            => 'footer-1',
 			'description'   => esc_html__('Add widgets here.', 'petlovethis'),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
+			'before_widget' => '<div id="%1$s" class="widget %2$s flex flex-col gap-8  text-white">',
+			'after_widget'  => '</div>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		)
@@ -161,7 +184,11 @@ function petlovethis_scripts()
 
 	wp_enqueue_style('petlovethis-style', get_stylesheet_uri(), [], filemtime(get_template_directory() . '/style.css'));
 
-	wp_enqueue_script('petlovethis-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+	$script_path = get_template_directory() . '/js/navigation.js';
+	$script_uri = get_template_directory_uri() . '/js/navigation.js';
+	$script_version = filemtime($script_path);
+
+	wp_enqueue_script('petlovethis-navigation', $script_uri, array(), $script_version, true);
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
@@ -189,9 +216,43 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
+
+require get_template_directory() . '/inc/shortcode.php';
+
+
+
+require get_template_directory() . '/inc/widgets/detailed-about-us.php';
+
+
+require get_template_directory() . '/inc/custom-function.php';
+
+
+
 /**
  * Load Jetpack compatibility file.
  */
 if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+
+function petlovesthis_fix_category_pagination($query_string = array())
+{
+	if (
+		isset($query_string['category_name'])
+		&& isset($query_string['name']) && $query_string['name'] === 'page'
+		&& isset($query_string['page'])
+	) {
+		$paged = trim($query_string['page'], '/');
+		if (is_numeric($paged)) {
+			// we are not allowing 'page' as a page or post slug 
+			unset($query_string['name']);
+			unset($query_string['page']);
+
+			// for a category archive, proper pagination query string  is 'paged'
+			$query_string['paged'] = (int) $paged;
+		}
+	}
+	return $query_string;
+}
+add_filter('request', 'petlovesthis_fix_category_pagination');

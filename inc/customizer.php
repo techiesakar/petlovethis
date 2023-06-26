@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Pet Love This Theme Customizer
  *
@@ -31,6 +32,39 @@ function petlovethis_customize_register($wp_customize)
 				'render_callback' => 'petlovethis_customize_partial_blogdescription',
 			)
 		);
+	}
+
+
+
+
+
+	// For Social Link
+
+
+
+	// Add a new section for social links.
+	$wp_customize->add_section('petlovethis_social_links_section', array(
+		'title'    => __('Social Links', 'petlovethis'),
+		'priority' => 160,
+	));
+
+	// Add settings and controls for each social link.
+	$social_links = array('facebook', 'tiktok', 'instagram', 'linkedin', 'twitter', 'whatsapp');
+
+	foreach ($social_links as $platform) {
+		// Add setting.
+		$wp_customize->add_setting("petlovethis_{$platform}_link", array(
+			'default'           => '',
+			'sanitize_callback' => 'esc_url_raw',
+		));
+
+		// Add control.
+		$wp_customize->add_control("petlovethis_{$platform}_link", array(
+			'label'    => ucfirst($platform),
+			'section'  => 'petlovethis_social_links_section',
+			'type'     => 'url',
+			'priority' => 10,
+		));
 	}
 }
 add_action('customize_register', 'petlovethis_customize_register');

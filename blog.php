@@ -15,7 +15,7 @@ defined('ABSPATH') || exit;
 get_header();
 ?>
 
-<main id="primary" class="site-main font-poppins">
+<main id="primary" class="site-main font-poppins pt-24">
     <section id="recent-cats">
         <?php
         // Include recent posts card template part.

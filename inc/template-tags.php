@@ -15,9 +15,9 @@ if (!function_exists('petlovethis_posted_on')) :
 	function petlovethis_posted_on()
 	{
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-		if (get_the_time('U') !== get_the_modified_time('U')) {
-			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
-		}
+		// if (get_the_time('U') !== get_the_modified_time('U')) {
+		// 	$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+		// }
 
 		$time_string = sprintf(
 			$time_string,
@@ -169,50 +169,3 @@ if (!function_exists('wp_body_open')) :
 		do_action('wp_body_open');
 	}
 endif;
-
-
-
-
-
-/**
- * Custom template tags for pagination.
- */
-/**
- * Display pagination for archive pages.
- */
-function petlovethis_pagination($paged = '', $max_page = '')
-{
-	if (!$paged) {
-		$paged = (get_query_var('paged')) ? get_query_var('paged') : ((get_query_var('page')) ? get_query_var('page') : 1);
-	}
-
-	if (!$max_page) {
-		global $wp_query;
-		$max_page = isset($wp_query->max_num_pages) ? $wp_query->max_num_pages : 1;
-	}
-
-	$big  = 999999999; // need an unlikely integer
-
-	$html = paginate_links(array(
-		'base'       => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-		'format'     => '?paged=%#%',
-		'current'    => max(1, $paged),
-		'total'      => $max_page,
-		'mid_size'   => 1,
-		'prev_text' => __('<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-		<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-	  </svg>
-	  '),
-		'next_text' => __('<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-		<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-	  </svg>
-	  '),
-
-	));
-
-	$html = "<div class='navigation pagination inline-flex gap-2'>" . $html . "</div>";
-
-	echo $html;
-	// To Implement the code
-	//  petlovethis_pagination($paged, $query->max_num_pages);
-}

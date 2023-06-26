@@ -15,11 +15,25 @@ defined('ABSPATH') || exit;
 get_header();
 ?>
 
-<main id="primary" class="site-main font-poppins">
-    <section id="recent-cats">
+<main id="primary" class="site-main pt-24">
+    <section>
         <?php
-        // Include recent posts card template part.
+
+        get_template_part('template-parts/sections/block-2');
+
+
+        ?>
+    </section>
+
+    <section>
+        <?php
         get_template_part('template-parts/sections/recent-posts-card-section');
+
+        ?>
+    </section>
+
+    <section>
+        <?php
         get_template_part('template-parts/sections/featured-section-1');
 
         ?>

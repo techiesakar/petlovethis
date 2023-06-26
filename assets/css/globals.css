@@ -18,7 +18,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 @tailwind utilities;
 @layer components {
   .btn-primary {
-    @apply relative inline-flex items-center gap-2 rounded border border-gray-300 px-7 py-4 text-base font-medium text-gray-900 transition  hover:text-white;
+    @apply relative inline-flex items-center gap-2 rounded border border-gray-300 px-4 py-3 text-base font-medium text-gray-900 transition  hover:text-hover;
   }
   .btn-primary::before {
     @apply absolute left-0 top-0 -z-10 h-full w-0 bg-primary transition-all duration-500 content-[""] hover:w-full;
@@ -27,88 +27,160 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
     @apply text-gray-100;
   }
   .pagination .page-numbers {
-    @apply inline-flex h-12 w-12 items-center justify-center rounded border border-gray-300 p-2 transition duration-200 hover:bg-primary hover:text-white;
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-3xl border border-gray-300 p-2 text-underline transition duration-200 hover:bg-light-green;
   }
   .pagination .current {
-    @apply bg-primary text-white;
+    @apply bg-light-green;
   }
   .author-avatar {
     @apply rounded-full;
   }
   article h1 {
-    @apply text-3xl font-semibold;
+    @apply text-4xl font-semibold;
   }
   article h2 {
-    @apply text-2xl;
+    @apply text-3xl font-semibold;
   }
   article h3 {
-    @apply text-xl;
+    @apply text-2xl;
   }
   article h4 {
-    @apply text-base;
+    @apply text-xl;
   }
   article h5 {
-    @apply text-sm;
+    @apply text-lg;
   }
   article h6 {
-    @apply text-xs;
+    @apply text-base;
   }
-  article p,
+
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    @apply mb-3 tracking-wider;
+    @apply mb-2;
+  }
+  article p {
+    @apply mb-4;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-gray-800;
+  }
+
+  article p,
+  article ul {
+    @apply text-[17px] text-gray-800;
+  }
+
+  .post__below__banner {
+    @apply pb-80 pt-5;
+  }
+  #comment {
+    @apply w-full rounded border border-gray-300;
+  }
+
+  .comment-form-comment {
+    @apply flex flex-col;
+  }
+  #commentform {
+    @apply flex flex-col gap-6;
+  }
+
+  #submit {
+    @apply cursor-pointer rounded-md bg-blue-500 px-3 py-2 text-white;
+  }
+
+  #commentform input {
+    @apply rounded border border-gray-300 p-2;
+  }
+  #search_overlay {
+    @apply -z-40 opacity-0 transition duration-300 ease-linear;
+  }
+
+  .petContainer {
+    @apply mx-auto w-11/12 md:w-10/12;
   }
 }
 
-#primary_nav {
-  @apply flex;
+#search_overlay {
+  z-index: -10;
+  opacity: 0;
 }
-#primary-menu {
-  @apply flex;
-}
-
-.is_fixed {
-  z-index: 50;
-  position: fixed;
-  border-bottom: none;
-  left: 0;
-  right: 0;
-  box-shadow: none;
-  animation: slide-in--down 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-.scrolled #masthead {
-  @apply p-2;
-}
-.scrolled #nav_wrapper {
-  @apply rounded-3xl p-6;
+#search_overlay.active {
+  z-index: 40;
+  opacity: 100;
 }
 
-.scrolled #primary_nav,
-.scrolled #masthead {
-  background-color: transparent;
-}
-.scrolled_completed {
-  top: -300px;
-  animation: slide-in--up 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+/* Highlight active form field */
+
+#primary-menu a {
+  @apply text-base  font-medium text-gray-900;
 }
 
-@keyframes slide-in--down {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
+.entry-content ul {
+  @apply my-3 ml-6 text-gray-700;
 }
-@keyframes slide-in--up {
-  0% {
-    transform: translateY(-200%);
-  }
-  100% {
-    transform: translateY(0);
-  }
+
+footer a {
+  @apply text-gray-700;
+}
+
+#rank-math-toc {
+  @apply rounded-2xl border border-light-green bg-highlight-bg p-4;
+}
+#rank-math-toc ul li {
+  @apply list-decimal leading-7 transition hover:underline;
+}
+#rank-math-toc h2 {
+  @apply m-0 flex justify-between;
+}
+#rank-math-toc h2::after {
+  content: "\f0d7";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#rank-math-toc nav {
+  @apply h-auto max-h-[700px] overflow-hidden transition-all duration-300 ease-in-out;
+}
+
+#rank-math-toc nav.collapsed {
+  @apply max-h-0;
+}
+
+html {
+  @apply scroll-smooth;
+}
+.widget_logo_text_nav_widget img {
+  height: 96px;
+}
+footer p {
+  @apply text-gray-700;
+}
+
+article #submit {
+  @apply rounded-md bg-btn-bg px-4 py-3;
+}
+
+/* fonts */
+
+.font-poppins {
+  font-family: Poppins, sans-serif;
+}
+
+#archive-categories li {
+  @apply rounded-xl border border-gray-700 px-6 py-2 font-light text-gray-900;
+}
+
+#archive-categories .current-menu-item {
+  @apply bg-light-green;
 }
