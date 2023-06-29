@@ -184,3 +184,11 @@ article #submit {
 #archive-categories .current-menu-item {
   @apply bg-light-green;
 }
+
+.card-button.active-button {
+  @apply bg-light-cyan h-4 w-4 rounded-full;
+}
+
+.card-button {
+  @apply h-4 w-4 rounded-full bg-light-purple;
+}

@@ -13,7 +13,7 @@ defined('ABSPATH') || exit;
 ?>
 
 <div class="relative py-8">
-    <div class="max-w-screen-2xl mx-auto relative text-white">
+    <div class="max-w-screen-xl mx-auto relative text-white">
 
         <div class="content flex flex-col gap-6 mb-8 ">
             <div class="flex items-center gap-2">
@@ -57,7 +57,7 @@ defined('ABSPATH') || exit;
         </div>
     </div>
     </section>
-    <section class="max-w-screen-2xl mx-auto relative ">
+    <section class="max-w-screen-xl mx-auto relative ">
         <div class="grid grid-cols-12">
             <div class="flex flex-col col-span-8 relative gap-8 mb-4">
 

@@ -16,6 +16,11 @@ get_header();
 ?>
 
 <main id="primary" class="site-main pt-24">
+
+    <section>
+        <?php get_template_part('template-parts/sections/hero'); ?>
+    </section>
+
     <section>
         <?php
 

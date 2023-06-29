@@ -100,34 +100,6 @@
   }
 })();
 
-// var prevScrollpos = window.pageYOffset;
-
-window.addEventListener("scroll", function () {
-  // scrollFunction();
-});
-
-// function scrollFunction() {
-//   var currentScrollPos = window.pageYOffset;
-//   if (prevScrollpos > currentScrollPos) {
-//     document.body.classList.remove("scrolled_down");
-//     document.body.classList.add("scrolled_up");
-//   } else {
-//     document.body.classList.remove("scrolled_up");
-//     document.body.classList.add("scrolled_down");
-//   }
-//   prevScrollpos = currentScrollPos;
-
-//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-//     document.getElementById("primary_nav").classList.add("is_fixed");
-//     document.getElementById("masthead").classList.remove("scrolled_completed");
-//     document.body.classList.add("scrolled");
-//   } else {
-//     document.getElementById("primary_nav").classList.remove("is_fixed");
-//     document.getElementById("masthead").classList.add("scrolled_completed");
-//     document.body.classList.remove("scrolled");
-//   }
-// }
-
 const searchCloses = document.querySelectorAll(".search_close");
 const searchOverlayContainer = document.getElementById("search_overlay");
 console.log(searchCloses);
@@ -205,3 +177,31 @@ function scrollIndicator() {
 
   document.getElementById("scrollIndicator").style.width = scrolled + "%";
 }
+
+function showCard(cardNumber) {
+  // Get all the buttons
+  var buttons = document.getElementsByClassName("card-button");
+
+  // Remove the active class from all buttons
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].classList.remove("active-button");
+  }
+
+  // Add the active class to the clicked button
+  var clickedButton = document.getElementById("button" + cardNumber);
+  clickedButton.classList.add("active-button");
+
+  // Show or hide the corresponding card based on the button clicked
+  var cards = document.getElementsByClassName("heroCard");
+  for (var j = 0; j < cards.length; j++) {
+    if (j + 1 === cardNumber) {
+      cards[j].style.display = "grid";
+    } else {
+      cards[j].style.display = "none";
+    }
+  }
+}
+showCard(1);
+
+// Set the first button as active by default
+document.getElementById("button1").classList.add("active-button");

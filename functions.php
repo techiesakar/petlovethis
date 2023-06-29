@@ -139,6 +139,7 @@ function custom_image_sizes()
 	add_image_size('md_card_image', 324, 226, true);
 	add_image_size('sm_card_image', 155, 103, true);
 	add_image_size('xs_card_image', 155, 103, true);
+	add_image_size('hero_image', 470, 310, true);
 }
 
 

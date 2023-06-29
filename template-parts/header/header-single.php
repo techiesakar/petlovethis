@@ -1,8 +1,8 @@
-<header id="masthead" class="site-header flex items-center font-poppins bg-light-white  fixed top-0 left-0 r-0 h-24   w-full z-40 shadow ">
-    <nav id="primary_nav" class=" petContainer mx-auto h-full" role="navigation" aria-label="Primary Navigation">
-        <div id="nav_wrapper" class="w-full flex justify-between items-center gap-12 relative h-full">
+<header id="masthead" class="site-header flex items-center font-poppins bg-light-white  w-full   py-10">
+    <nav id="primary_nav" class=" petContainer mx-auto" role="navigation" aria-label="Primary Navigation">
+        <div id="nav_wrapper" class="w-full flex flex-col justify-between items-center relative gap-6">
             <div class="site-branding ">
-                <a class="custom-logo-link h-14 flex items-center" href="<?php echo home_url(); ?>"><?php petlovethis_custom_logo('custom-logo h-full w-auto'); ?></a>
+                <a class="custom-logo-link h-10 flex items-center" href="<?php echo home_url(); ?>"><?php petlovethis_custom_logo('custom-logo h-full w-auto'); ?></a>
                 <?php
 
                 if (is_front_page() && is_home()) :
@@ -25,7 +25,7 @@
             </div>
             <!-- Site Branding Ends -->
 
-            <nav id="site-navigation" class="w-full main-navigation hidden md:flex items-center gap-6 mx-auto justify-end">
+            <nav id="site-navigation" class="w-full main-navigation  hidden md:flex items-center justify-center gap-6  ">
 
                 <?php
                 wp_nav_menu(
